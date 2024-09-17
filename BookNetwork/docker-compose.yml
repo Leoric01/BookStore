@@ -1,19 +1,19 @@
 services:
-  mysql:
-    container_name: mysql-bsn
-    image: mysql:8.0
-    environment:
-      MYSQL_USER: username
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: book_social_network
-    volumes:
-      - mysql:/var/lib/mysql
-    ports:
-      - 3306:3306
-    networks:
-      - spring-demo
-    restart: unless-stopped
+#  mysql:
+#    container_name: mysql-bsn
+#    image: mysql:8.0
+#    environment:
+#      MYSQL_USER: username
+#      MYSQL_PASSWORD: password
+#      MYSQL_ROOT_PASSWORD: rootpassword
+#      MYSQL_DATABASE: book_social_network
+#    volumes:
+#      - mysql:/var/lib/mysql
+#    ports:
+#      - 3306:3306
+#    networks:
+#      - spring-demo
+#    restart: unless-stopped
 
   mail-dev:
     container_name: mail-dev-bsn

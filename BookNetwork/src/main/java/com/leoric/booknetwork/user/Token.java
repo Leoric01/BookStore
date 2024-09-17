@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Token {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String token;
     private LocalDateTime createdAt;

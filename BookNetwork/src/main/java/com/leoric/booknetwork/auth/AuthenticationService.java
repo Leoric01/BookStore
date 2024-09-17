@@ -1,11 +1,14 @@
 package com.leoric.booknetwork.auth;
 
+import com.leoric.booknetwork.email.EmailService;
+import com.leoric.booknetwork.email.EmailTemplateName;
 import com.leoric.booknetwork.repositories.RoleRepository;
 import com.leoric.booknetwork.repositories.TokenRepository;
 import com.leoric.booknetwork.repositories.UserRepository;
 import com.leoric.booknetwork.role.Role;
 import com.leoric.booknetwork.user.Token;
 import com.leoric.booknetwork.user.User;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,10 +25,11 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
-    int length = 6;
+    private final EmailService emailService;
+    String activationUrl;
 
 
-    public void register(RegistrationRequest request) {
+    public void register(RegistrationRequest request) throws MessagingException {
         Role userRole = roleRepository.findByName("USER")
                 .orElseThrow(() -> new IllegalArgumentException("ROLE USER was not initialized"));
         User user = User.builder()
@@ -41,12 +45,21 @@ public class AuthenticationService {
         sendValidationEmail(user);
     }
 
-    private void sendValidationEmail(User user) {
+    private void sendValidationEmail(User user) throws MessagingException {
         String newToken = generateAndSaveActivationToken(user);
-        //TODO: SEND EMAIL
+
+        emailService.sendEmail(
+                user.getEmail(),
+                user.getFullname(),
+                EmailTemplateName.ACTIVATE_ACCOUNT,
+                activationUrl,
+                newToken,
+                "Account activation"
+        );
     }
 
     private String  generateAndSaveActivationToken(User user) {
+        int length = 6;
         String generatedToken = generateActivationCode(length);
         Token token = Token.builder()
                 .token(generatedToken)

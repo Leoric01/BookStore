@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableAsync
 public class BookNetworkApplication {
 
@@ -20,7 +20,8 @@ public class BookNetworkApplication {
 
     @Bean
 	public CommandLineRunner runner(RoleRepository roleRepository) {
-		return args -> {
+		// intellij suggested to replace args with underscore, need to check out if it's ok. App works tho
+		return _ -> {
 			if (roleRepository.findByName("USER").isEmpty()) {
 				roleRepository.save(Role.builder().name("USER").build());
 			}

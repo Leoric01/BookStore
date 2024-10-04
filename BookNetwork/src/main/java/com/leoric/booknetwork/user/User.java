@@ -1,5 +1,7 @@
 package com.leoric.booknetwork.user;
 
+import com.leoric.booknetwork.book.Book;
+import com.leoric.booknetwork.history.BookTransactionHistory;
 import com.leoric.booknetwork.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -56,6 +58,12 @@ public class User implements UserDetails, Principal {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+
+    @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "owner")
+    private List<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> histories;
 
     @Override
     public String getName() {

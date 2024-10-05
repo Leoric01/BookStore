@@ -3,6 +3,8 @@ package com.leoric.booknetwork.book;
 import com.leoric.booknetwork.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
+import static com.leoric.booknetwork.file.FileUtils.readFileFromLocation;
+
 @Service
 public class BookMapper {
 
@@ -28,8 +30,7 @@ public class BookMapper {
                 .archived(book.isArchived())
                 .shareable(book.isShareable())
                 .owner(book.getOwner().getFullname())
-//                TODO
-//                .cover()
+                .cover(readFileFromLocation(book.getBookCover()))
                 .build();
     }
 

@@ -1,5 +1,5 @@
 {
-  "name": "book-network-ui",
+  "name": "book-nework-ui2",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,8 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:book-network-ui": "node dist/book-network-ui/server/server.mjs",
-    "api-gen": "ng-openapi-gen --input ./src/openapi/openapi.json --output ./src/app/services"
+    "serve:ssr:book-nework-ui2": "node dist/book-nework-ui2/server/server.mjs",
+    "api-gen": "ng-openapi-gen --input ./src/openapi/openapi.json --output ./src/app/services",
+    "api-gen-open": "openapi-generator-cli generate -i ./src/openapi/openapi.json -g typescript-angular -o ./src/app/services"
   },
   "private": true,
   "dependencies": {
@@ -41,8 +42,8 @@
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "karma-jasmine": "^4.0.2",
+    "karma-jasmine-html-reporter": "^1.7.0",
     "typescript": "~5.5.2"
   }
 }

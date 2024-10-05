@@ -3,11 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "book-network-ui": {
+    "book-nework-ui2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/book-network-ui",
+            "outputPath": "dist/book-nework-ui2",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "book-network-ui:build:production"
+              "buildTarget": "book-nework-ui2:build:production"
             },
             "development": {
-              "buildTarget": "book-network-ui:build:development"
+              "buildTarget": "book-nework-ui2:build:development"
             }
           },
           "defaultConfiguration": "development"

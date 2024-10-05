@@ -31,8 +31,11 @@ public class Book extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
-    @OneToMany(mappedBy = "book")
+
+    // NOT IDEAL TO USE EAGER IN CASE THERE'S A LOT OF FEEDBACKS, IF SHORT LIST - THEN OK
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<Feedback> feedbacks;
+
     @OneToMany(mappedBy = "book")
     private List<BookTransactionHistory> histories;
 

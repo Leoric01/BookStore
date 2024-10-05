@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="ef1cf9a4-9c06-45a0-abb1-0a14283223b4" name="book_social_network@localhost Mapping">
+      <data-sources db="0006ca40-a933-43bc-ab37-e356529b9a61" />
+      <scope>
+        <node negative="1">
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+          <node kind="schema" qname="book_social_network" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+</project>

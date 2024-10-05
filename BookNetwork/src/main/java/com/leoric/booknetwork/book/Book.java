@@ -4,10 +4,7 @@ import com.leoric.booknetwork.common.BaseEntity;
 import com.leoric.booknetwork.feedback.Feedback;
 import com.leoric.booknetwork.history.BookTransactionHistory;
 import com.leoric.booknetwork.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,4 +35,17 @@ public class Book extends BaseEntity {
     private List<Feedback> feedbacks;
     @OneToMany(mappedBy = "book")
     private List<BookTransactionHistory> histories;
+
+    @Transient
+    public double getRate() {
+        if (feedbacks == null || feedbacks.isEmpty()) {
+            return 0.0;
+        }
+        double rate = this.feedbacks.stream()
+                .mapToDouble(Feedback::getNote)
+                .average()
+                .orElse(0.0);
+        //round to whole number
+        return Math.round(rate * 100.0) / 100.0;
+    }
 }

@@ -23,7 +23,6 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @CreatedDate
     @Column(nullable = false ,updatable = false)
     private LocalDate createdDate;

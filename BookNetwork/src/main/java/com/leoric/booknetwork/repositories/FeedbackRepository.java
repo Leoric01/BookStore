@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
     @Query("""
                         SELECT feedback
-                        FROM Feedback  feedback
+                        FROM Feedback feedback
                         WHERE feedback.book.id = :bookId
             """)
     Page<Feedback> findAllByBookId(@Param("bookId") Integer bookId, Pageable pageable);

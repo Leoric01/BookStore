@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,8 +43,8 @@ public class FeedbackService {
 
     @Transactional
     public PageResponse<FeedbackResponse> findAllFeedbacksByBook(Integer bookId, int page, int size, Authentication connectedUser) {
-        Pageable pageable = PageRequest.of(page, size);
         User user = ((User) connectedUser.getPrincipal());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
         Page<Feedback> feedbacks = feedbackRepository.findAllByBookId(bookId, pageable);
         List<FeedbackResponse> feedbackResponses = feedbacks.stream()
                 .map(f -> feedbackMapper.toFeedbackResponse(f, user.getId()))

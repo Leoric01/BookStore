@@ -1,7 +1,5 @@
 package com.leoric.booknetwork.config;
 
-
-
 import com.leoric.booknetwork.user.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.AuditorAware;

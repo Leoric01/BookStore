@@ -18,7 +18,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Getter
 @Setter
 @Builder
@@ -70,8 +69,6 @@ public class User implements UserDetails, Principal {
         return email;
     }
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles
@@ -110,7 +107,7 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    public String getFullname(){
+    public String getFullname() {
         return firstName + " " + lastName;
     }
 }

@@ -26,13 +26,13 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @CreatedDate
-    @Column(nullable = false ,updatable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDate createdDate;
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDate lastModifiedDate;
     @CreatedBy
-    @Column(nullable = false ,updatable = false)
+    @Column(nullable = false, updatable = false)
     private Integer createdBy;
     @LastModifiedBy
     @Column(insertable = false)

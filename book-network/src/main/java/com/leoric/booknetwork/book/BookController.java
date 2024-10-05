@@ -1,6 +1,5 @@
 package com.leoric.booknetwork.book;
 
-
 import com.leoric.booknetwork.common.PageResponse;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -96,7 +95,7 @@ public class BookController {
     @PostMapping(value = "/cover/{book-id}", consumes = "multipart/form-data")
     public ResponseEntity<?> uploadBookCoverPicture(
             @PathVariable("book-id") Integer bookId,
-            @Parameter()
+            @Parameter
             @RequestPart("file") MultipartFile file,
             Authentication connectedUser
     ) {

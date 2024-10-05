@@ -36,7 +36,7 @@ public class Book extends BaseEntity {
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<Feedback> feedbacks;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<BookTransactionHistory> histories;
 
     @Transient

@@ -11,6 +11,7 @@ import com.leoric.booknetwork.user.Token;
 import com.leoric.booknetwork.user.User;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,6 +35,8 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+
+    @Value("${mailing.frontend.activation-url}")
     String activationUrl;
 
 

@@ -22,8 +22,8 @@ public class RegistrationRequest {
     @NotBlank(message = "Email name is mandatory")
     @Email(message = "Email is not in valid format")
     private String email;
-    @NotEmpty(message = "Password name is mandatory")
-    @NotBlank(message = "Passwrd name is mandatory")
+    @NotEmpty(message = "Password is mandatory")
+    @NotBlank(message = "Password is mandatory")
     @Size(min = 4, message = "Password should be at least 4 characters long")
     private String password;
 

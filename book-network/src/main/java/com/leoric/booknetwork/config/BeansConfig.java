@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,6 +17,8 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.springframework.http.HttpHeaders.*;
 
 @Configuration
 @RequiredArgsConstructor
@@ -56,10 +57,10 @@ public class BeansConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost:8080"));
         config.setAllowedHeaders(Arrays.asList(
-                HttpHeaders.ORIGIN,
-                HttpHeaders.CONTENT_TYPE,
-                HttpHeaders.ACCEPT,
-                HttpHeaders.AUTHORIZATION
+                ORIGIN,
+                CONTENT_TYPE,
+                ACCEPT,
+                AUTHORIZATION
         ));
         config.setAllowedMethods(Arrays.asList(
                 "GET",
@@ -70,7 +71,5 @@ public class BeansConfig {
         ));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-
     }
-
 }

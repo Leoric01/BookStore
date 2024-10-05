@@ -15,9 +15,9 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Entity
 public class Feedback extends BaseEntity {
 

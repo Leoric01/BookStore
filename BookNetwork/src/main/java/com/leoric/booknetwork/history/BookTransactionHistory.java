@@ -14,9 +14,9 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Entity
 public class BookTransactionHistory extends BaseEntity {
 
